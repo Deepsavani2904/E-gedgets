@@ -1,0 +1,942 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "ecommerse",
+    "contact": {},
+    "version": "1.0"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:5000/api",
+      "variables": {}
+    }
+  ],
+  "paths": {
+    "/auth/register": {
+      "post": {
+        "tags": [
+          "auth"
+        ],
+        "summary": "register",
+        "operationId": "register",
+        "parameters": [],
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/registerrequest"
+                  },
+                  {
+                    "example": {
+                      "userName": "aa",
+                      "email": "aa@gmail.com",
+                      "mobileNo": 1234567890,
+                      "password": "123",
+                      "confirmPassword": "123"
+                    }
+                  }
+                ]
+              },
+              "example": {
+                "userName": "aa",
+                "email": "aa@gmail.com",
+                "mobileNo": 1234567890,
+                "password": "123",
+                "confirmPassword": "123"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/auth/login": {
+      "post": {
+        "tags": [
+          "auth"
+        ],
+        "summary": "Login",
+        "operationId": "Login",
+        "parameters": [],
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/LoginRequest"
+                  },
+                  {
+                    "example": {
+                      "email": "aaa555@gmail.com",
+                      "password": "15523"
+                    }
+                  }
+                ]
+              },
+              "example": {
+                "email": "aaa555@gmail.com",
+                "password": "15523"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/auth/forgot": {
+      "post": {
+        "tags": [
+          "auth"
+        ],
+        "summary": "Forgot",
+        "operationId": "Forgot",
+        "parameters": [],
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/ForgotRequest"
+                  },
+                  {
+                    "example": {
+                      "password": "1122",
+                      "confirmPassword": "1122"
+                    }
+                  }
+                ]
+              },
+              "example": {
+                "password": "1122",
+                "confirmPassword": "1122"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false,
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/auth/reset": {
+      "post": {
+        "tags": [
+          "auth"
+        ],
+        "summary": "reset",
+        "operationId": "reset",
+        "parameters": [],
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/resetrequest"
+                  },
+                  {
+                    "example": {
+                      "otp": 430447,
+                      "newPassword": "123",
+                      "confirmPassword": "123"
+                    }
+                  }
+                ]
+              },
+              "example": {
+                "otp": 430447,
+                "newPassword": "123",
+                "confirmPassword": "123"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false,
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/auth/verifyemail": {
+      "post": {
+        "tags": [
+          "auth"
+        ],
+        "summary": "email verify",
+        "operationId": "emailverify",
+        "parameters": [],
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/emailverifyrequest"
+                  },
+                  {
+                    "example": {
+                      "email": "ccc@gmail.com"
+                    }
+                  }
+                ]
+              },
+              "example": {
+                "email": "ccc@gmail.com"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/auth/otp": {
+      "post": {
+        "tags": [
+          "auth"
+        ],
+        "summary": "checkOtp",
+        "operationId": "checkOtp",
+        "parameters": [],
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/checkOtpRequest"
+                  },
+                  {
+                    "example": {
+                      "otp": 144535
+                    }
+                  }
+                ]
+              },
+              "example": {
+                "otp": 144535
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false,
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/product/get": {
+      "get": {
+        "tags": [
+          "product"
+        ],
+        "summary": "get",
+        "operationId": "get",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false,
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/product/get/658d98006e004542f0d84089": {
+      "get": {
+        "tags": [
+          "product"
+        ],
+        "summary": "get One Data",
+        "operationId": "getOneData",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false,
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/product/add": {
+      "post": {
+        "tags": [
+          "product"
+        ],
+        "summary": "post",
+        "operationId": "post",
+        "parameters": [],
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/postrequest"
+                  },
+                  {
+                    "example": {
+                      "productName": "samsung7",
+                      "productPrice": 10000,
+                      "productType": "Digital",
+                      "description": "New Product",
+                      "category": "industry"
+                    }
+                  }
+                ]
+              },
+              "example": {
+                "productName": "samsung7",
+                "productPrice": 10000,
+                "productType": "Digital",
+                "description": "New Product",
+                "category": "industry"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false,
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/product/update": {
+      "patch": {
+        "tags": [
+          "product"
+        ],
+        "summary": "Update",
+        "operationId": "Update",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "description": "",
+            "required": true,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "string",
+              "example": "658d98046e004542f0d8408b"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/UpdateRequest"
+                  },
+                  {
+                    "example": {
+                      "productName": "samsung6",
+                      "productPrice": 15000,
+                      "productType": "Digital",
+                      "description": "New Product",
+                      "category": "industry"
+                    }
+                  }
+                ]
+              },
+              "example": {
+                "productName": "samsung6",
+                "productPrice": 15000,
+                "productType": "Digital",
+                "description": "New Product",
+                "category": "industry"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false,
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/product/delete/658d97c96e004542f0d84081": {
+      "delete": {
+        "tags": [
+          "product"
+        ],
+        "summary": "Delete",
+        "operationId": "Delete",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false,
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/user/get": {
+      "get": {
+        "tags": [
+          "user"
+        ],
+        "summary": "get",
+        "operationId": "Getget",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false,
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/user/get/658d99c26e004542f0d840ac": {
+      "get": {
+        "tags": [
+          "user"
+        ],
+        "summary": "get one data",
+        "operationId": "getonedata",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false,
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/user/add": {
+      "post": {
+        "tags": [
+          "user"
+        ],
+        "summary": "post",
+        "operationId": "Postpost",
+        "parameters": [],
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/postrequest1"
+                  },
+                  {
+                    "example": {
+                      "userName": "user7",
+                      "email": "ddd@gmail.com",
+                      "password": "123",
+                      "mobileNo": 1234567890,
+                      "confirmPassword": "123"
+                    }
+                  }
+                ]
+              },
+              "example": {
+                "userName": "user7",
+                "email": "ddd@gmail.com",
+                "password": "123",
+                "mobileNo": 1234567890,
+                "confirmPassword": "123"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false,
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/user/update": {
+      "post": {
+        "tags": [
+          "user"
+        ],
+        "summary": "update",
+        "operationId": "update",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "description": "",
+            "required": true,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "string",
+              "example": "658d99ba6e004542f0d840a9"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/updaterequest1"
+                  },
+                  {
+                    "example": {
+                      "userName": "user6",
+                      "email": "user6@gmail.com",
+                      "mobileNo": 9876541302
+                    }
+                  }
+                ]
+              },
+              "example": {
+                "userName": "user6",
+                "email": "user6@gmail.com",
+                "mobileNo": 9876541302
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false,
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/user/delete/658d9a396e004542f0d840b0": {
+      "delete": {
+        "tags": [
+          "user"
+        ],
+        "summary": "delete",
+        "operationId": "delete",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false,
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "registerrequest": {
+        "title": "registerrequest",
+        "required": [
+          "userName",
+          "email",
+          "mobileNo",
+          "password",
+          "confirmPassword"
+        ],
+        "type": "object",
+        "properties": {
+          "userName": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          },
+          "mobileNo": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "password": {
+            "type": "string"
+          },
+          "confirmPassword": {
+            "type": "string"
+          }
+        },
+        "example": {
+          "userName": "aa",
+          "email": "aa@gmail.com",
+          "mobileNo": 1234567890,
+          "password": "123",
+          "confirmPassword": "123"
+        }
+      },
+      "LoginRequest": {
+        "title": "LoginRequest",
+        "required": [
+          "email",
+          "password"
+        ],
+        "type": "object",
+        "properties": {
+          "email": {
+            "type": "string"
+          },
+          "password": {
+            "type": "string"
+          }
+        },
+        "example": {
+          "email": "aaa555@gmail.com",
+          "password": "15523"
+        }
+      },
+      "ForgotRequest": {
+        "title": "ForgotRequest",
+        "required": [
+          "password",
+          "confirmPassword"
+        ],
+        "type": "object",
+        "properties": {
+          "password": {
+            "type": "string"
+          },
+          "confirmPassword": {
+            "type": "string"
+          }
+        },
+        "example": {
+          "password": "1122",
+          "confirmPassword": "1122"
+        }
+      },
+      "resetrequest": {
+        "title": "resetrequest",
+        "required": [
+          "otp",
+          "newPassword",
+          "confirmPassword"
+        ],
+        "type": "object",
+        "properties": {
+          "otp": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "newPassword": {
+            "type": "string"
+          },
+          "confirmPassword": {
+            "type": "string"
+          }
+        },
+        "example": {
+          "otp": 430447,
+          "newPassword": "123",
+          "confirmPassword": "123"
+        }
+      },
+      "emailverifyrequest": {
+        "title": "emailverifyrequest",
+        "required": [
+          "email"
+        ],
+        "type": "object",
+        "properties": {
+          "email": {
+            "type": "string"
+          }
+        },
+        "example": {
+          "email": "ccc@gmail.com"
+        }
+      },
+      "checkOtpRequest": {
+        "title": "checkOtpRequest",
+        "required": [
+          "otp"
+        ],
+        "type": "object",
+        "properties": {
+          "otp": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "example": {
+          "otp": 144535
+        }
+      },
+      "postrequest": {
+        "title": "postrequest",
+        "required": [
+          "productName",
+          "productPrice",
+          "productType",
+          "description",
+          "category"
+        ],
+        "type": "object",
+        "properties": {
+          "productName": {
+            "type": "string"
+          },
+          "productPrice": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "productType": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "category": {
+            "type": "string"
+          }
+        },
+        "example": {
+          "productName": "samsung7",
+          "productPrice": 10000,
+          "productType": "Digital",
+          "description": "New Product",
+          "category": "industry"
+        }
+      },
+      "UpdateRequest": {
+        "title": "UpdateRequest",
+        "required": [
+          "productName",
+          "productPrice",
+          "productType",
+          "description",
+          "category"
+        ],
+        "type": "object",
+        "properties": {
+          "productName": {
+            "type": "string"
+          },
+          "productPrice": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "productType": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "category": {
+            "type": "string"
+          }
+        },
+        "example": {
+          "productName": "samsung6",
+          "productPrice": 15000,
+          "productType": "Digital",
+          "description": "New Product",
+          "category": "industry"
+        }
+      },
+      "postrequest1": {
+        "title": "postrequest1",
+        "required": [
+          "userName",
+          "email",
+          "password",
+          "mobileNo",
+          "confirmPassword"
+        ],
+        "type": "object",
+        "properties": {
+          "userName": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          },
+          "password": {
+            "type": "string"
+          },
+          "mobileNo": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "confirmPassword": {
+            "type": "string"
+          }
+        },
+        "example": {
+          "userName": "user7",
+          "email": "ddd@gmail.com",
+          "password": "123",
+          "mobileNo": 1234567890,
+          "confirmPassword": "123"
+        }
+      },
+      "updaterequest1": {
+        "title": "updaterequest1",
+        "required": [
+          "userName",
+          "email",
+          "mobileNo"
+        ],
+        "type": "object",
+        "properties": {
+          "userName": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          },
+          "mobileNo": {
+            "type": "integer",
+            "format": "int64"
+          }
+        },
+        "example": {
+          "userName": "user6",
+          "email": "user6@gmail.com",
+          "mobileNo": 9876541302
+        }
+      }
+    },
+    "securitySchemes": {
+      "bearer": {
+        "type": "http",
+        "scheme": "bearer"
+      }
+    }
+  },
+  "security": [],
+  "tags": [
+    {
+      "name": "auth"
+    },
+    {
+      "name": "product"
+    },
+    {
+      "name": "user"
+    }
+  ]
+}
